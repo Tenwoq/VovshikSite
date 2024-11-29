@@ -17,6 +17,121 @@ html, body {
     margin: 0;
 }
 
+#crypto-addresses {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.crypto-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #222;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+.crypto-item span {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.crypto-item input {
+    width: 100%;
+    max-width: 250px;
+    background: #444;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 5px;
+    color: #fff;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.crypto-item input:focus {
+    outline: none;
+    border-color: #888;
+}
+
+#crypto-addresses {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #222;
+    animation: slide-down 0.3s ease-out; /* Анимация появления */
+}
+
+.crypto-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+.crypto-item span {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.crypto-item input {
+    width: 100%;
+    max-width: 250px;
+    background: #444;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 5px;
+    color: #fff;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.copy-button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.copy-button i {
+    pointer-events: none;
+}
+
+.copy-button:hover {
+    transform: scale(1.2);
+    color: #76c8af;
+}
+
+.copy-button.success i {
+    color: #4caf50; /* Зеленый цвет для галочки */
+}
+
+/* Анимация выпадения */
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
 .container {
     background-color: transparent;
     padding: 20px;
@@ -77,8 +192,8 @@ html, body {
 
 .support-button {
     display: flex;
-    align-items: center;
-    justify-content: center; /* Центрируем контент по горизонтали */
+    align-items: center;  /* Центрируем содержимое по вертикали */
+    justify-content: center;  /* Центрируем содержимое по горизонтали */
     padding: 12px 25px;
     margin: 10px;
     text-decoration: none;
@@ -87,11 +202,13 @@ html, body {
     color: #000;
     font-size: 1.2em;
     transition: 0.3s;
-    width: 100%; /* Задаем ширину кнопки */
-    max-width: 400px; /* Максимальная ширина для кнопок */
+    width: 100%;
+    max-width: 400px;
     text-align: center;
     box-sizing: border-box;
 }
+
+
 
 .support-button.yandex {
     background-color: #ffe130; /* Ярко-оранжевый для Яндекс Чаевых */
@@ -103,8 +220,8 @@ html, body {
 }
 
 .support-button.usdt {
-    background-color: #54ae94; /* Зелёный цвет для USDT */
-    color: #000;
+    background-color: #16192a; /* Зелёный цвет для USDT */
+    color: #fff;
 }
 
 .support-button:hover {
@@ -113,9 +230,31 @@ html, body {
 }
 
 .support-logo {
-    width: 25px;
-    height: 25px;
-    margin-right: 10px; /* Расстояние между иконкой и текстом */
+    width: 40px;  /* Увеличиваем картинку */
+    height: 40px; /* Увеличиваем картинку */
+    margin-right: 10px; /* Отступ между картинкой и текстом */
+}
+
+.support-button summary {
+    display: flex;
+    align-items: center;  /* Центрируем элементы по вертикали */
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+}
+
+.support-button summary::marker {
+    display: none;  /* Убираем стандартный маркер (треугольник) */
+}
+
+/* Иконка треугольника */
+.support-button summary:after {
+    content: '\25BC';  /* Треугольник (стрелка вниз) */
+    font-size: 1.5em;
+    margin-left: 10px; /* Отступ от текста до стрелки */
+    transition: transform 0.3s ease; /* Анимация при раскрытии */
+}
+
+.support-button[open] summary:after {
+    transform: rotate(180deg); /* Поворот стрелки при раскрытии */
 }
 
 /* Секция с кнопками соцсетей */
