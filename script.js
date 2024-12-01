@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     copyButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            const input = button.previousElementSibling;
+            const input = button.previousElementSibling; // Получаем поле ввода перед кнопкой
             input.select();
             input.setSelectionRange(0, 99999); // Для мобильных устройств
 
@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     icon.className = 'fa-solid fa-copy'; // Иконка копирования
                     button.classList.remove('success');
                 }, 2000);
+            }).catch(() => {
+                console.error('Ошибка копирования текста');
             });
         });
     });
