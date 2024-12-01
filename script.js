@@ -13,23 +13,46 @@ document.addEventListener('DOMContentLoaded', () => {
     copyButtons.forEach((button) => {
         button.addEventListener('click', () => {
             const input = button.previousElementSibling; // Получаем поле ввода перед кнопкой
-            input.select();
-            input.setSelectionRange(0, 99999); // Для мобильных устройств
+            const textToCopy = input.value;
 
-            navigator.clipboard.writeText(input.value).then(() => {
-                // Меняем иконку на галочку
-                const icon = button.querySelector('i');
-                icon.className = 'fa-solid fa-check'; // Галочка
-                button.classList.add('success');
-
-                // Через 2 секунды возвращаем иконку копирования
-                setTimeout(() => {
-                    icon.className = 'fa-solid fa-copy'; // Иконка копирования
-                    button.classList.remove('success');
-                }, 2000);
-            }).catch(() => {
-                console.error('Ошибка копирования текста');
-            });
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                // Используем Clipboard API, если доступно
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showCopySuccess(button);
+                }).catch(() => {
+                    console.error('Ошибка копирования через Clipboard API');
+                });
+            } else {
+                // Альтернативный метод для HTTP и старых браузеров
+                fallbackCopyText(textToCopy, button);
+            }
         });
     });
+
+    // Функция показа успешного копирования
+    function showCopySuccess(button) {
+        const icon = button.querySelector('i');
+        icon.className = 'fa-solid fa-check'; // Галочка
+        button.classList.add('success');
+
+        setTimeout(() => {
+            icon.className = 'fa-solid fa-copy'; // Возврат к копированию
+            button.classList.remove('success');
+        }, 2000);
+    }
+
+    // Альтернативный метод копирования
+    function fallbackCopyText(text, button) {
+        const tempInput = document.createElement('textarea');
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        try {
+            document.execCommand('copy');
+            showCopySuccess(button);
+        } catch (err) {
+            console.error('Ошибка копирования через execCommand', err);
+        }
+        document.body.removeChild(tempInput);
+    }
 });
