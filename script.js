@@ -17,13 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 // Используем Clipboard API, если доступно
-                navigator.clipboard.writeText(textToCopy).then(() => {
-                    showCopySuccess(button);
-                }).catch(() => {
-                    console.error('Ошибка копирования через Clipboard API');
-                });
+                navigator.clipboard.writeText(textToCopy)
+                    .then(() => showCopySuccess(button))
+                    .catch(() => {
+                        console.error('Ошибка копирования через Clipboard API');
+                        fallbackCopyText(textToCopy, button);
+                    });
             } else {
-                // Альтернативный метод для HTTP и старых браузеров
+                // Используем альтернативный метод
                 fallbackCopyText(textToCopy, button);
             }
         });
@@ -48,10 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(tempInput);
         tempInput.select();
         try {
-            document.execCommand('copy');
-            showCopySuccess(button);
+            const success = document.execCommand('copy');
+            if (success) {
+                showCopySuccess(button);
+            } else {
+                console.error('Ошибка копирования через execCommand');
+            }
         } catch (err) {
-            console.error('Ошибка копирования через execCommand', err);
+            console.error('Ошибка при использовании execCommand', err);
         }
         document.body.removeChild(tempInput);
     }
