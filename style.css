@@ -220,7 +220,12 @@ html, body {
 }
 
 .support-button.usdt {
-    background-color: #16192a; /* Зелёный цвет для USDT */
+    background-color: #16192a; /*  цвет для bybit */
+    color: #fff;
+}
+
+.support-button.bingx {
+    background-color: #2a54ff; /*  цвет для bingx */
     color: #fff;
 }
 
