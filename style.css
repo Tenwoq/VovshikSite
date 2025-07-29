@@ -240,6 +240,37 @@ html, body {
     margin-right: 10px; /* Отступ между картинкой и текстом */
 }
 
+.support-button.tbank {
+    background-color: #fff; /* Белый фон, как у Instagram/TikTok */
+    color: #000; /* Чёрный текст */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    margin: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: 0.3s;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.support-button.tbank:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.support-logotbank {
+    width: 120px;  /* Ширина твоего логотипа */
+    height: 40px;  /* Высота твоего логотипа */
+    margin-right: 10px;
+}
+
+
 .support-button summary {
     display: flex;
     align-items: center;  /* Центрируем элементы по вертикали */
@@ -298,18 +329,13 @@ html, body {
     box-sizing: border-box;
 }
 
-.social-button .social-logo {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
 
 .social-button.twitch {
     background-color: #9146ff;
 }
 
 .social-button.youtube {
-    background-color: #ff0000;
+    background-color: white;
 }
 
 
@@ -322,6 +348,40 @@ html, body {
     background-color: #000;
     color:#fff;
 }
+
+.social-button.instagram {
+    background-color: #fff;
+}
+
+.social-button .social-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.social-button .social-logoyou {
+    width: 135px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.social-button .social-logoinsta {
+    width: 120px;
+    height: 30px;
+}
+
+.social-button .social-logotwitch {
+    width: 108px;
+    height: 36px;
+    margin-left: 5px;
+}
+
+.social-button .social-logotiktok {
+    width: 108px;
+    height: 36px;
+    margin-left: 5px;
+}
+
 
 .social-button:hover {
     transform: scale(1.1);
@@ -343,7 +403,7 @@ html, body {
 }
 
 .social-button.referral {
-    background-color: #ffe130; /* Цвет кнопки */
+    background-color: #000;
     color: #000; /* Белый текст */
     padding: 8px 20px; /* Уменьшено вертикальное и горизонтальное заполнение */
     margin: 10px; /* Отступ вокруг кнопки */
@@ -359,20 +419,17 @@ html, body {
 }
 
 .social-button.referral .social-logo {
+    background-color: white;
     width: 25px; /* Размер иконки */
     height: 25px;
     margin-right: 10px; /* Расстояние между иконкой и текстом */
 }
 
+
 .social-button.referral:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
-
-
-
-
 
 
 /* Текст внизу страницы */
